@@ -26,10 +26,48 @@ const form = document.querySelector('.application-form');
 const formMessage = document.querySelector('.form-message');
 
 if (form && formMessage) {
+  const applicantTypeInputs = form.querySelectorAll('input[name="applicant_type"]');
+  const teamOnlyFields = form.querySelectorAll('[data-team-only]');
+  const teamInputs = Array.from(teamOnlyFields).flatMap((field) =>
+    Array.from(field.querySelectorAll('input, select, textarea')),
+  );
+  const teamSizeInput = form.querySelector('input[name="team_size"]');
+
+  const syncTeamFields = () => {
+    const applicantType = form.querySelector('input[name="applicant_type"]:checked')?.value ?? 'individual';
+    const isTeam = applicantType === 'team';
+
+    teamOnlyFields.forEach((field) => {
+      field.hidden = !isTeam;
+    });
+
+    if (teamSizeInput) {
+      teamSizeInput.required = isTeam;
+    }
+
+    if (!isTeam) {
+      teamInputs.forEach((input) => {
+        if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
+          input.value = '';
+        }
+        if (input instanceof HTMLSelectElement) {
+          input.selectedIndex = 0;
+        }
+      });
+    }
+  };
+
+  if (applicantTypeInputs.length) {
+    applicantTypeInputs.forEach((input) => input.addEventListener('change', syncTeamFields));
+    syncTeamFields();
+  }
+
   form.addEventListener('submit', (event) => {
+    syncTeamFields();
+
     if (!form.checkValidity()) {
       event.preventDefault();
-      formMessage.textContent = 'Please complete all required fields before submitting.';
+      formMessage.textContent = 'Please fill out the required fields highlighted below.';
       formMessage.classList.add('error');
       formMessage.classList.remove('success');
       form.reportValidity();
@@ -41,9 +79,5 @@ if (form && formMessage) {
     formMessage.classList.remove('success');
 
     // Native form submit continues to configured endpoint.
-    setTimeout(() => {
-      formMessage.textContent = 'Application submitted. Please check your inbox for confirmation.';
-      formMessage.classList.add('success');
-    }, 800);
   });
 }

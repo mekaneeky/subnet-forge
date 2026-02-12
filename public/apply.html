@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apply | Subnet Forge</title>
+  <meta name="description" content="Apply to Subnet Forge, a one-month Bittensor subnet build program hosted at Network School." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="apply.css" />
+</head>
+<body class="application-page">
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Subnet Forge home">
+      <span class="brand-mark"></span>
+      <span>Subnet Forge</span>
+    </a>
+    <nav>
+      <a href="index.html#program">Program</a>
+      <a href="index.html#why">Why Bittensor</a>
+      <a href="index.html#benchmarks">Taostats</a>
+      <a href="index.html#faq">FAQ</a>
+      <a class="nav-cta" href="index.html">Back to Overview</a>
+    </nav>
+  </header>
+
+  <main class="application-main">
+    <section class="application-hero reveal">
+      <p class="eyebrow">Application</p>
+      <h1>Apply to Subnet Forge</h1>
+      <p class="application-hero-copy">
+        One month, build-first, sparse programming. Keep it lightweight: contact info + your subnet thesis. Optional details are tucked away.
+      </p>
+      <ul class="application-meta" aria-label="Application details">
+        <li><strong>Time to complete:</strong> ~3 minutes</li>
+        <li><strong>Decision window:</strong> usually within 5 business days</li>
+        <li><strong>Tuition:</strong> $0 for accepted builders</li>
+        <li><strong>On-site package:</strong> $1,500/person/month at Network School</li>
+      </ul>
+    </section>
+
+    <section class="application-shell reveal">
+      <aside class="application-aside" aria-label="Review criteria">
+        <h2>What reviewers care about</h2>
+        <ul>
+          <li>A clear subnet thesis with technical substance.</li>
+          <li>Evidence that you can ship fast and iterate weekly.</li>
+          <li>Relevant links: code, research, writing, prior launches.</li>
+          <li>Practical alignment with Bittensor ecosystem needs.</li>
+        </ul>
+        <p class="aside-note">
+          Solo builders are welcome. If accepted, strong individuals may be matched with compatible teams.
+        </p>
+      </aside>
+
+      <form class="application-form" action="https://formsubmit.co/applications@ns.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Subnet Forge Application" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+
+        <p class="form-intro">
+          Short answers are fine. If you are a fit, we will follow up for details.
+        </p>
+
+        <div class="field-grid">
+          <label class="field">
+            Full Name
+            <input type="text" name="full_name" autocomplete="name" required />
+          </label>
+
+          <label class="field">
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+
+          <fieldset class="field-group field-wide" aria-label="Applicant type">
+            <legend>Applying as</legend>
+            <div class="choice-row">
+              <label class="choice">
+                <input type="radio" name="applicant_type" value="individual" checked />
+                <span>Individual</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="applicant_type" value="team" />
+                <span>Team</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="field team-only" data-team-only hidden>
+            Team / Project Name
+            <input type="text" name="team_name" autocomplete="organization" placeholder="Optional" />
+          </label>
+
+          <label class="field team-only" data-team-only hidden>
+            Team Size
+            <input type="number" name="team_size" min="1" max="25" placeholder="2" inputmode="numeric" />
+          </label>
+
+          <fieldset class="field-group field-wide" aria-label="In-person availability">
+            <legend>Can you attend in person at Network School?</legend>
+            <div class="choice-row">
+              <label class="choice">
+                <input type="radio" name="in_person_availability" value="yes" required />
+                <span>Yes</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="in_person_availability" value="depends_on_dates" />
+                <span>Depends on dates</span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="in_person_availability" value="no" />
+                <span>Need remote</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="field field-wide">
+            Your subnet thesis (2&ndash;6 sentences)
+            <textarea name="subnet_idea" rows="5" placeholder="What's the subnet? What's the scoring signal? Who uses it? What can you ship in 30 days?" required></textarea>
+          </label>
+
+          <label class="field field-wide">
+            Proof you can ship (links, optional)
+            <textarea name="links" rows="2" spellcheck="false" placeholder="GitHub, demos, papers, writing. If private, paste what you can and we'll follow up."></textarea>
+          </label>
+
+          <details class="form-details field-wide">
+            <summary>Optional: logistics + extra context</summary>
+            <div class="details-grid">
+              <label class="field">
+                Preferred Cohort Window
+                <select name="preferred_cohort">
+                  <option value="next_available" selected>Next available</option>
+                  <option value="within_30_days">Within 30 days</option>
+                  <option value="within_60_days">Within 60 days</option>
+                  <option value="later_this_year">Later this year</option>
+                </select>
+              </label>
+
+              <label class="field">
+                Primary Role
+                <input type="text" name="role" placeholder="e.g., ML, protocol, full-stack" />
+              </label>
+
+              <label class="field field-wide">
+                Current Location / Time Zone
+                <input type="text" name="location_timezone" placeholder="e.g., NYC (UTC-5)" />
+              </label>
+
+              <label class="field field-wide">
+                Bittensor / Subnet Experience
+                <textarea name="experience" rows="3" placeholder="Optional. Anything relevant: prior subnets, eval pipelines, distributed systems, shipped products."></textarea>
+              </label>
+            </div>
+          </details>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" name="agreement" required />
+          <span>I can commit to the full one-month program.</span>
+        </label>
+
+        <button class="btn btn-primary" type="submit">Submit Application</button>
+        <p class="form-note">You should receive a confirmation email. Most decisions are shared within 5 business days.</p>
+        <p class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Subnet Forge | Hosted at Network School</p>
+    <p>
+      <a href="https://ns.com" target="_blank" rel="noreferrer">ns.com</a>
+      |
+      Privacy + Terms shared in acceptance packet
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
