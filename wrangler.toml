@@ -1,6 +1,12 @@
 name = "subnet-forge"
 main = "worker.js"
 compatibility_date = "2026-02-06"
+workers_dev = false
+
+routes = [
+  { pattern = "buildasub.net", custom_domain = true },
+  { pattern = "www.buildasub.net", custom_domain = true }
+]
 
 [assets]
 directory = "./public"
